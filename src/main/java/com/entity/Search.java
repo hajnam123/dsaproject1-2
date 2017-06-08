@@ -19,7 +19,7 @@ public class Search {
 			int mid = i+(j-i)/2;
 			
 			if(Util.ComCustomer.compare(a.get(mid), c)<0) i = mid + 1;
-			if(Util.ComCustomer.compare(a.get(mid), c)>0) j = mid - 1;			
+			if(Util.ComCustomer.compare(a.get(mid), c)>0) j = mid - 1;
 			if(Util.ComCustomer.compare(a.get(mid), c)==0) return mid;
 		}
 		return -1;
