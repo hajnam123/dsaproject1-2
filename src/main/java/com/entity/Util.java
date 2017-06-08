@@ -117,28 +117,28 @@ public class Util {
 		return new TypeToken<ArrayList<Customer>>(){}.getType();
 	}
 	
-	private static final Comparator<Product> ComProduct = new Comparator<Product>() {
+	public static final Comparator<Product> ComProduct = new Comparator<Product>() {
 		@Override
 		public int compare(Product o1, Product o2) {
 			return o1.getPcode().compareTo(o2.getPcode());
 		}
 	};
 	
-	private static final Comparator<Order> ComOrderpcode = new Comparator<Order>() {
+	public static final Comparator<Order> ComOrderpcode = new Comparator<Order>() {
 		@Override
 		public int compare(Order o1, Order o2) {
 			return o1.getPcode().compareTo(o2.getPcode());
 		}
 	};
 
-	private static final Comparator<Order> ComOrderccode = new Comparator<Order>() {
+	public static final Comparator<Order> ComOrderccode = new Comparator<Order>() {
 		@Override
 		public int compare(Order o1, Order o2) {
 			return o1.getCcode().compareTo(o2.getCcode());
 		}
 	};	
 
-	private static final Comparator<Customer> ComCustomer = new Comparator<Customer>() {
+	public static final Comparator<Customer> ComCustomer = new Comparator<Customer>() {
 		@Override
 		public int compare(Customer o1, Customer o2) {
 			return o1.getCcode().compareTo(o2.getCcode());
@@ -148,7 +148,9 @@ public class Util {
 	static double findpricebypcode(ArrayList<Product> ap,String pcode){
 		try{
 			if(!productpcodesorted)sortproductbypcode(ap);
-			int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+			//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+			Search s = new Search();
+			int i = s.binarysearchProduct(ap, pcode);
 			return ap.get(i).getPrice();
 		}catch(Exception e){
 			return 0;
@@ -157,13 +159,17 @@ public class Util {
 	
 	public static Product findbypcode(ArrayList<Product> ap, String pcode){
 		if(!productpcodesorted)sortproductbypcode(ap);
-		int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+		//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+		Search s = new Search();
+		int i = s.binarysearchProduct(ap, pcode);
 		return ap.get(i);
 	}
 	
 	public static Product deletebypcode(ArrayList<Product> ap, String pcode){
 		if(!productpcodesorted)sortproductbypcode(ap);
-		int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+		//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+		Search s = new Search();
+		int i = s.binarysearchProduct(ap, pcode);
 		Product p = ap.get(i);
 		ap.remove(i);
 		return p;
@@ -171,7 +177,10 @@ public class Util {
 	
 	public static Product deleteafterpcode(ArrayList<Product> ap, String pcode){
 		if(!productpcodesorted)sortproductbypcode(ap);
-		int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+		//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+		
+		Search s = new Search();		
+		int i = s.binarysearchProduct(ap, pcode);
 		Product p = ap.get(i+1);
 		ap.remove(i+1);
 		return p;
@@ -179,37 +188,57 @@ public class Util {
 	
 	public static Customer findbyccode(ArrayList<Customer> ac, String ccode){
 		if(!customerccodesorted)sortcustomerbyccode(ac);
-		int i = Collections.binarySearch(ac, new Customer(ccode),ComCustomer);
+		//int i = Collections.binarySearch(ac, new Customer(ccode),ComCustomer);
+		Search s = new Search();
+		int i = s.binarysearchCustomer(ac, ccode);
 		return ac.get(i);
 	}
 
-	public static Customer deletebyccode(String s) {
+	public static Customer deletebyccode(String ccode) {
 		if(!customerccodesorted)sortcustomerbyccode(ac);
-		int i = Collections.binarySearch(ac, new Customer(s),ComCustomer);
+		//int i = Collections.binarySearch(ac, new Customer(s),ComCustomer);
+		Search s = new Search();
+		int i = s.binarysearchCustomer(ac, ccode);
 		Customer c = ac.get(i);
 		ac.remove(i);
 		return c;
 	}
 	
 	public static void sortorderbypcode(ArrayList<Order> ao){
-		Collections.sort(ao, ComOrderpcode);
+		//Collections.sort(ao, ComOrderpcode);
+		//orderpcodesorted = true;
+		//ordercccodesorted = false;
+
+		Sort s = new Sort();
+		s.quickSortOrderp(ao, 0, ao.size()-1);
 		orderpcodesorted = true;
 		ordercccodesorted = false;
 	}
 	
 	public static void sortorderbyccode(ArrayList<Order> ao){
-		Collections.sort(ao, ComOrderccode);
+		////Collections.sort(ao, ComOrderccode);
+		//ordercccodesorted = true;
+		//orderpcodesorted = false;
+		
+		Sort s = new Sort();
+		s.quickSortOrderc(ao, 0, ao.size()-1);
 		ordercccodesorted = true;
-		orderpcodesorted = false;		
+		orderpcodesorted = false;
 	}
 	
 	public static void sortproductbypcode(ArrayList<Product> ap){
-		Collections.sort(ap, ComProduct);
+		//Collections.sort(ap, ComProduct);
+		//productpcodesorted = true;
+		
+		Sort s = new Sort();
+		s.quickSortProduct(ap, 0, ap.size()-1);
 		productpcodesorted = true;
 	}
 	
 	public static void sortcustomerbyccode(ArrayList<Customer> ac){
-		Collections.sort(ac, ComCustomer);
+		//Collections.sort(ac, ComCustomer);
+		Sort s = new Sort();
+		s.quickSortCustomer(ac, 0, ac.size()-1);
 		customerccodesorted = true;
 	}
 }

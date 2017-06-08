@@ -27,15 +27,16 @@ public class Logic {
 			System.out.println("================");
 			System.out.println("10. Add Customer");
 			System.out.println("11. Display all customer");
-			System.out.println("12. Save customer list to file");
-			System.out.println("13. Search customer by ccode");
-			System.out.println("14. Delete customer by ccode");
+			System.out.println("12. Sort all customer by ccode");
+			System.out.println("13. Save customer list to file");
+			System.out.println("14. Search customer by ccode");
+			System.out.println("15. Delete customer by ccode");			
 			System.out.println("================");
-			System.out.println("15. Add order");
-			System.out.println("16. Display order with total");
-			System.out.println("17. Sort order by pcode");
-			System.out.println("18. Sort order by ccode");
-			System.out.println("19. Save order list to file");;
+			System.out.println("16. Add order");
+			System.out.println("17. Display order with total");
+			System.out.println("18. Sort order by pcode");
+			System.out.println("19. Sort order by ccode");
+			System.out.println("20. Save order list to file");;
 			System.out.println("0. Exit");
 			System.out.print("Input choice: ");
 			try {
@@ -53,14 +54,15 @@ public class Logic {
 				case 9: this.deleteproductafter();break;
 				case 10: this.addcustomer();break;
 				case 11: this.displaycustomer();break;
-				case 12: this.savecustomer();break;
-				case 13: this.searchcusomer();break;
-				case 14: this.deletecustomer();break;
-				case 15: this.addorder();break;
-				case 16: this.displayorder();break;
-				case 17: this.sortorderpcode();break;
-				case 18: this.sortorderccode();break;
-				case 19: this.saveorder();break;				
+				case 12: this.sortcustomer();break;
+				case 13: this.savecustomer();break;
+				case 14: this.searchcusomer();break;
+				case 15: this.deletecustomer();break;
+				case 16: this.addorder();break;
+				case 17: this.displayorder();break;
+				case 18: this.sortorderpcode();break;
+				case 19: this.sortorderccode();break;
+				case 20: this.saveorder();break;				
 				}
 			} catch (IOException e) {
 				System.out.println(e.toString());
@@ -174,6 +176,14 @@ public class Logic {
 		}
 	}
 	
+	public void sortcustomer(){
+		try{
+			Util.sortcustomerbyccode(Util.ac);
+		}catch(Exception e){
+			System.out.println(e.toString());
+		}
+	}
+	
 	public void savecustomer(){
 		try{
 			Util.tofile2(Util.ac);
@@ -187,6 +197,7 @@ public class Logic {
 		try{
 			System.out.print("Input ccode: ");c.setCcode(br.readLine());
 			c = Util.findbyccode(Util.ac, c.getCcode());
+			System.out.println(c.toString());
 		}catch(Exception e){
 			System.out.println(e.toString());
 		}
