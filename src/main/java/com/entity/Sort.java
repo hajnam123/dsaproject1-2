@@ -19,7 +19,7 @@ public class Sort {
                 i++;
                 j--;
             }
-      };
+      }
       return i;
 	}
 	
@@ -53,7 +53,7 @@ public class Sort {
                 i++;
                 j--;
             }
-      };
+      }
       return i;	
 	}
 		
@@ -87,7 +87,7 @@ public class Sort {
                 i++;
                 j--;
             }
-      };
+      }
       return i;	
 	}
 
@@ -106,7 +106,7 @@ public class Sort {
                 i++;
                 j--;
             }
-      };
+      }
       return i;	
 	}
 	
