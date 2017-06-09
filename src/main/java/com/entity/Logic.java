@@ -64,7 +64,7 @@ public class Logic {
 				case 19: this.sortorderccode();break;
 				case 20: this.saveorder();break;				
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				System.out.println(e.toString());
 			}
 		}
