@@ -90,6 +90,8 @@ public class Logic {
 			Util.ap.add(p);
 			
 			System.out.println("Added: "+p.toString());
+			
+			Util.productpcodesorted = false;
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -160,6 +162,7 @@ public class Logic {
 			System.out.print("Input phone: ");c.setPhone(br.readLine());
 			Util.ac.add(c);
 			System.out.println("Added :" + c.toString());
+			Util.customerccodesorted = false;
 		}catch(Exception e){
 			System.out.println(e.toString());
 		}
@@ -225,6 +228,8 @@ public class Logic {
 			}else{
 				Util.ao.add(o);
 				System.out.println("Added :" + o.toString());
+				Util.ordercccodesorted= false;
+				Util.orderpcodesorted = false;
 			}
 		}catch(Exception e){
 			System.out.println(e.toString());

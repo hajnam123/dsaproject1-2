@@ -28,14 +28,14 @@ public class Util {
 	private static final String toOrders = "data\\orders.json";
 
 	public static ArrayList<Product> ap = new ArrayList<>();
-	private static boolean productpcodesorted = false;
+	public static boolean productpcodesorted = false;
 	
 	public static ArrayList<Order> ao = new ArrayList<>();
-	private static boolean orderpcodesorted = false;
-	private static boolean ordercccodesorted = false;
+	public static boolean orderpcodesorted = false;
+	public static boolean ordercccodesorted = false;
 	
 	public static ArrayList<Customer> ac = new ArrayList<>();
-	private static boolean customerccodesorted = false;
+	public static boolean customerccodesorted = false;
 	
 	public static void init(){
 		try {
