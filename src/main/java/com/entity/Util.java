@@ -158,50 +158,74 @@ public class Util {
 	}
 	
 	public static Product findbypcode(ArrayList<Product> ap, String pcode){
-		if(!productpcodesorted)sortproductbypcode(ap);
-		//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
-		Search s = new Search();
-		int i = s.binarysearchProduct(ap, pcode);
-		return ap.get(i);
+		try{
+			if(!productpcodesorted)sortproductbypcode(ap);
+			//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+			Search s = new Search();
+			int i = s.binarysearchProduct(ap, pcode);
+			return ap.get(i);			
+		}catch(Exception e){
+			System.out.println("Not found. " + e.toString());
+		}
+		return null;
 	}
 	
 	public static Product deletebypcode(ArrayList<Product> ap, String pcode){
-		if(!productpcodesorted)sortproductbypcode(ap);
-		//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
-		Search s = new Search();
-		int i = s.binarysearchProduct(ap, pcode);
-		Product p = ap.get(i);
-		ap.remove(i);
-		return p;
+		try{
+			if(!productpcodesorted)sortproductbypcode(ap);
+			//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
+			Search s = new Search();
+			int i = s.binarysearchProduct(ap, pcode);
+			Product p = ap.get(i);
+			ap.remove(i);
+			return p;			
+		}catch(Exception e){
+			System.out.println("Not found. " + e.toString());
+		}
+		return null;
 	}
 	
 	public static Product deleteafterpcode(ArrayList<Product> ap, String pcode){
+		try{
+			Search s = new Search();		
+			int i = s.binarysearchProduct(ap, pcode);
+			Product p = ap.get(i+1);
+			ap.remove(i+1);
+			return p;			
+		}catch(Exception e){
+			System.out.println("Not found. " + e.toString());
+		}
 		if(!productpcodesorted)sortproductbypcode(ap);
-		//int i = Collections.binarySearch(ap, new Product(pcode),ComProduct);
-		
-		Search s = new Search();		
-		int i = s.binarysearchProduct(ap, pcode);
-		Product p = ap.get(i+1);
-		ap.remove(i+1);
-		return p;
+		return null;
 	}		
 	
 	public static Customer findbyccode(ArrayList<Customer> ac, String ccode){
-		if(!customerccodesorted)sortcustomerbyccode(ac);
-		//int i = Collections.binarySearch(ac, new Customer(ccode),ComCustomer);
-		Search s = new Search();
-		int i = s.binarysearchCustomer(ac, ccode);
-		return ac.get(i);
+		try{
+			if(!customerccodesorted)sortcustomerbyccode(ac);
+			//int i = Collections.binarySearch(ac, new Customer(ccode),ComCustomer);
+			Search s = new Search();
+			int i = s.binarysearchCustomer(ac, ccode);
+			return ac.get(i);
+			
+		}catch(Exception e){
+			System.out.println("Not found. " + e.toString());
+		}
+		return null;
 	}
 
 	public static Customer deletebyccode(String ccode) {
-		if(!customerccodesorted)sortcustomerbyccode(ac);
-		//int i = Collections.binarySearch(ac, new Customer(s),ComCustomer);
-		Search s = new Search();
-		int i = s.binarysearchCustomer(ac, ccode);
-		Customer c = ac.get(i);
-		ac.remove(i);
-		return c;
+		try{
+				if(!customerccodesorted)sortcustomerbyccode(ac);
+				//int i = Collections.binarySearch(ac, new Customer(s),ComCustomer);
+				Search s = new Search();
+				int i = s.binarysearchCustomer(ac, ccode);
+				Customer c = ac.get(i);
+				ac.remove(i);
+				return c;	
+		}catch(Exception e){
+			System.out.println("Not found. " + e.toString());
+		}
+		return null;
 	}
 	
 	public static void sortorderbypcode(ArrayList<Order> ao){
