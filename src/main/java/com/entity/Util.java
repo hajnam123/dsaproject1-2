@@ -44,6 +44,11 @@ public class Util {
 			ao = gson.fromJson(new FileReader(Util.e2Orders), Util.ordarrtype(ao));
 			
 			ac = gson.fromJson(new FileReader(Util.e2Customers), Util.custarrtype(ac));
+			
+			productpcodesorted = false;
+			orderpcodesorted = false;
+			ordercccodesorted = false;
+			customerccodesorted = false;
 		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,6 +62,11 @@ public class Util {
 			ao = gson.fromJson(new FileReader(Util.e5Orders), Util.ordarrtype(ao));
 			
 			ac = gson.fromJson(new FileReader(Util.e5Customers), Util.custarrtype(ac));
+
+			productpcodesorted = false;
+			orderpcodesorted = false;
+			ordercccodesorted = false;
+			customerccodesorted = false;
 		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
